@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sterile Processing Resouurces</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <h1 class="page-title">Sterile Processing Resources</h1>
+    <ul>
+        <li>S</li>
+        <li>P</li>
+        <li>R</li>
+    </ul>
+    <section class="spd">
+        <div class="intro">
+            <div class="page-info">
+                <p>Welcome to your the sterile processing resource-your one stop resource center to all
+                    thing related to
+                    sterile processing. Take quizzes, study flaschcards and rome around.
+                </p>
+
+                <br class="list-item"><strong class="strong">Take Quizzes</strong> </br>
+                <br class="list-item"><strong class="strong">Study Flashcard</strong></br>
+                <br class="list-item"><strong class="strong">Explore</strong></br>
+
+            </div>
+            <div class="photo-slide"></div>
+        </div>
+
+
+    </section>
+
+
+    <h1 class="quiz-h1">Quizzes</h1>
+    <div id="quiz-container" class="quiz-container">
+
+        <!-- Category Selection Screen -->
+        <div id="category-screen" class="category-screen">
+            <h2 class="select-ctg">Select a Category</h2>
+            <button onclick="startQuiz('Sterilization')" class="ctg-btn">Sterilization</button>
+            <button onclick="startQuiz('Prep and Pack')" class="ctg-btn">Prep and Pack</button>
+            <button onclick="startQuiz('Decontamination')" class="ctg-btn">Decontamination</button>
+        </div>
+
+        <!-- Active Quiz Screen -->
+        <div id="question-screen" style="display: none;" class="question-screen">
+            <h2 id="category-title" class="category-title"></h2>
+            <p id="question-text" class="question-text"></p>
+            <div id="options-container" class="options-container"></div>
+        </div>
+
+        <!-- End Game Screen -->
+        <div id="result-screen" style="display: none;" class="result-screen">
+            <h2>Quiz Completed!</h2>
+            <p id="score-text"></p>
+            <button onclick="resetQuiz()" class="back-btn">Back to Categories</button>
+        </div>
+    </div>
+
+    <!--Flashcards Section-->
+    <h1 class="flashcard-h1">Study Flashcards</h1>
+    <div class="flashcard-grid">
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>What does SPD stand for?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Sterile Processing Department</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define organism?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Living thing, plant or animal; may be uincellular or malticellular</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define nucleus?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Functional center of a cell that governs activity and heredity</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define enzymatic solution?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Solution containing special enzymes that dissolves proteinaceous materials</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define disinfectant?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Chemical that kills most pathogenic organisms, but not all spores</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define convection?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Process of heat transfer by the circulation of currents form one area to another</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define chemical sterilization?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Porcess using a chemical agent to render a product free of viable microorganisms</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define conduction?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Heat transfer method in which heat is absorbed by an item's exterior surface and passed inward to
+                        the next layer</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define best practice?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>A method or technique that has consistently shown results superior to those achieve with other
+                        means</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define binary fission?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Typical method of bacterial reproduction in which a cell divides into two equal parts</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define AAMI?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Abbreviation for Association for the Advancement of Medical Instrumentation</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define acceptance sampling?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Inspection of a sample from a larger lot to decide whether the lot should be accepted</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define ASHCSP?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Abbreviation for American Society of Healthcare Central Service Personnel</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define stat?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Abbreviation for the Latin "statim," meaning immediately or at once</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define process challenge device (PCD) ?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>Object that simulates a predetermined set of conditions when use to test sterilizing agents</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="flashcard">
+            <div class="flashcard-inner">
+                <!-- Front Side -->
+                <div class="flashcard-front">
+                    <h2>Question</h2>
+                    <p>Define Prion?</p>
+                </div>
+                <!-- Back Side -->
+                <div class="flashcard-back">
+                    <h2>Answer</h2>
+                    <p>An infectious protein particle that, unlike a virus, contains no nucleic acid, does not trigger
+                        an immune response and is not destroyed by extreme heat or cold</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <section class="links-section">
+        <h2 class="explore">Checkout these links. Be sure to come back after your exploring!</h2>
+        <div class="links">
+
+
+            <div class="panel active" style="background-image: url(blackwhite.jpeg)"> <a
+                    href="https://myhspa.org/">HSPA</a>
+                <h3>Ready to get certified?</h3>
+            </div>
+
+            <div class="panel" style="background-image: url(blackwhite2.jpeg)"><a
+                    href="https://www.medtronic.com/en-us/healthcare-professionals/products/access-instruments.html">Medtronic</a>
+                <h3>These are your ortho specialists</h3>
+            </div>
+
+            <div class="panel" style="background-image: url(blackwhite3.jpeg)"> <a
+                    href="https://www.steris.com/healthcare/sterile-processing">Steris</a>
+                <h3>They know all about instrument washers</h3>
+            </div>
+
+            <div class="panel" style="background-image: url(surgery4.jpeg)"><a
+                    href="https://www.jnjmedtech.com/en-US/companies/depuy-synthes">Synthes</a>
+                <h3>Screws, Screws and more Screws</h3>
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <section class="tech-spot">
+
+
+        <h1 class="c-soon">Coming</h1>
+        <h1 class="c-soon">soon!</h1>
+
+        <img class="featured-tech-img" src="featuredtech.jpeg">
+
+
+    </section>
+    <h1 class="ts-request">Would you like to be featured in the Tech Spotlight?</h1>
+    <h1 class="ts-request">Just send us a short bio and a picture of yourself.</h1>
+
+
+
+
+
+    <div class="form-container">
+        <h1>Contact Us</h1>
+        <form name="spr-contact-form" netlify>
+            <div class="form-control">
+                <input type="text" required>
+                <label>Name</label>
+
+            </div>
+
+            <div class="form-control">
+                <input type="email" required>
+                <label>Email</label>
+            </div>
+            <div class="form-control">
+                <textarea required></textarea>
+                <label>Message</label>
+            </div>
+
+            <button class="btn">Send Message</button>
+
+    </div>
+
+
+    <script src="scritpt.js"></script>
+</body>
+
+
+<footer class="footer-section">
+    <p>&copy; 2026 Ailson Ferreira. All rights reserved</p>
+</footer>
+
+
+
+</html>
