@@ -363,15 +363,16 @@
 
     <div class="form-container">
         <h1>Contact Us</h1>
-        <form name="spr-contact-form" netlify>
+        <form name="spr-contact-form" method="POST" data-netlify="true" netlify>
+            
             <div class="form-control">
-                <input name="full-name" type="text" required>
+                <input type="text" name="full-name" required>
                 <label>Name</label>
 
             </div>
 
             <div class="form-control">
-                <input name="email" type="email" required>
+                <input type="email" name="email" required>
                 <label>Email</label>
             </div>
             <div class="form-control">
@@ -379,7 +380,7 @@
                 <label>Message</label>
             </div>
 
-            <button class="btn" type="submit">Send Message</button>
+            <button type="submit" class="btn" >Send Message</button>
 
     </div>
 
