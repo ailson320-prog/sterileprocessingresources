@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Identify and inspect surgical instruments and assemble a simulated tray using a count sheet.">
+<title>Instrument Assembly Lab | Sterile Processing Resources</title>
+<style>
+:root{font-family:system-ui,sans-serif;line-height:1.5;color:#102e38;background:#edf4f4;--line:#cfe0e0;--muted:#475f66;--teal:#00665a}*{box-sizing:border-box}body{margin:0}header{background:#082b37;color:white}.wrap{max-width:1170px;margin:auto;padding-inline:24px}.top{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap;padding-block:15px;border-bottom:1px solid #54717b}.brand{font-weight:750}.top a{color:#a8f1d8;font-weight:700}header section{padding-block:22px 29px}h1,h2,h3,p{margin:0}h1{font-size:clamp(2rem,5vw,3.25rem);letter-spacing:-.05em;line-height:1.1;margin-bottom:8px}header p{color:#d2e8e9}main{padding-block:20px 30px}.grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:16px;align-items:start}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px;margin-bottom:15px}.small,.help{font-size:.875rem;color:var(--muted)}h2{font-size:1.28rem;margin-bottom:7px}h3{font-size:1rem;margin-bottom:7px}.workspace-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}.views{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}button,select{font:inherit;border-radius:8px;min-height:42px}button{cursor:pointer;font-weight:700;padding:7px 11px;border:1px solid #aecbcc;background:#fff;color:#12333e}button:hover:not(:disabled){border-color:var(--teal);background:#e6f5f0}button[aria-pressed=true]{background:#d3eee5;border-color:var(--teal);color:#004f45}button.primary{background:var(--teal);color:white;border-color:var(--teal)}button.primary:hover:not(:disabled){background:#005146;color:white}button:disabled{cursor:default;opacity:.5}select{padding:6px 12px;background:white;border:1px solid #9ab8ba;color:#12333e;width:100%}button:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #c77700;outline-offset:3px}canvas{width:100%;height:auto;display:block;border-radius:10px;background:#15343f}figure{margin:0}figcaption{font-size:.875rem;color:var(--muted);margin:5px 0 11px}.inspection{border:0;padding:0;margin:0;min-width:0}.field{margin-bottom:10px}label{display:block;font-weight:700;margin-bottom:4px}.actions{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.notice{margin-top:9px;padding:10px;border-left:4px solid var(--teal);background:#eaf7f1}.notice.warn{background:#fff2de;border-color:#a35c00}.notice:empty{display:none}.sheet{width:100%;border-collapse:collapse;margin:8px 0}.sheet caption{text-align:left;color:var(--muted);font-size:.875rem}.sheet th,.sheet td{padding:9px 4px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}.sheet th[scope=col],.sheet td{font-size:.875rem}.sheet th[scope=row]{font-weight:650}.sheet th:last-child,.sheet td:last-child{text-align:center}.done{color:var(--teal);font-weight:750}.sheet-total{display:flex;justify-content:space-between;gap:12px}.log{padding-inline-start:20px;margin:6px 0 0;max-height:250px;overflow:auto}.log li{padding:4px 0}.ref{margin-top:12px}.ref a{color:var(--teal)}summary{font-weight:700;cursor:pointer}.ref p{margin:6px 0}.result{padding:12px;background:#eaf7f1;border-radius:9px;margin:10px 0}.result p+ p{margin-top:8px}.result button{margin-top:12px}.top button{background:transparent;color:#fff;border-color:#91aeb5}.top button:hover{background:#264753}.help{margin:5px 0} [hidden]{display:none!important}@media(max-width:760px){.grid{grid-template-columns:1fr}.wrap{padding-inline:14px}.panel{padding:13px}.sheet th,.sheet td{padding:7px 4px}}
+</style>
+<script defer src="assembly.js"></script>
+</head>
+<body>
+<header><div class="wrap"><div class="top"><span class="brand">Sterile Processing Resources</span><a href="../">Study hub</a><a href="./">The Add-On Case</a><button type="button" id="restart">Restart lab</button></div>
+<section><h1>Instrument assembly lab</h1><p>Identify each instrument, inspect its surfaces, and assemble a five-piece minor procedure tray.</p></section></div></header>
+<main class="wrap">
+<div class="grid">
+<section class="panel" aria-labelledby="station-title">
+<div class="workspace-head"><h2 id="station-title" tabindex="-1">Inspection station</h2><strong id="piece"></strong></div>
+<div id="work">
+<div class="views" role="group" aria-label="Instrument view">
+<button type="button" data-view="full">Full instrument</button>
+<button type="button" data-view="tip">Working end</button>
+<button type="button" data-view="joint" id="joint-view">Joint</button>
+</div>
+<figure><canvas id="instrument" width="1140" height="480" role="img" aria-label="Simulated instrument illustration"></canvas><figcaption id="view-caption"></figcaption></figure>
+<fieldset class="inspection">
+<div class="field"><label for="identity">Identify the instrument</label><select id="identity"><option value="">Choose from the count sheet</option></select></div>
+<div id="observations" hidden>
+<label for="finding">Choose the location of visible soil</label>
+<select id="finding"><option value="">Select a location</option><option value="tip">Working end</option><option value="joint" id="joint-option">Joint</option></select>
+</div>
+<p class="help" id="requirements">Open both close-ups before making a decision.</p>
+<div class="actions">
+<button type="button" id="add" class="primary" disabled>Clean · Add to tray</button>
+<button type="button" id="return" disabled>Soiled · Reprocess and replace</button>
+<button type="button" id="cancel" hidden>Cancel soil finding</button>
+</div>
+</fieldset>
+</div>
+<div id="notice" class="notice" role="status"></div>
+<div class="actions" id="advance" hidden><button id="next" class="primary" type="button"></button></div>
+<div id="debrief" hidden></div>
+</section>
+<aside aria-label="Count sheet and activity">
+<section class="panel"><h2>Count sheet</h2><table class="sheet">
+<caption>Minor procedure tray</caption>
+<thead><tr><th scope="col">Instrument</th><th scope="col">Required</th><th scope="col">Packed</th></tr></thead><tbody id="counts"></tbody></table>
+<div class="sheet-total"><strong>Total in tray</strong><strong id="tray-total" aria-live="polite"></strong></div>
+<details class="ref"><summary>Identification reference</summary><ul id="reference"></ul></details>
+</section>
+<section class="panel"><h2>Inspection log</h2><p id="empty-log" class="small">Your tray and reprocessing decisions will appear here.</p><ol class="log" id="history" reversed></ol></section>
+</aside>
+</div>
+<details class="ref"><summary>Training notes and source</summary><p>The inspection views use instrument photographs with simulated visible soil. This exercise covers visual identification, visible soil, and count reconciliation. In clinical work, follow your current manufacturer instructions for use and facility policies for inspection, testing, and reprocessing.</p><a href="https://www.cdc.gov/infection-control/hcp/disinfection-sterilization/cleaning.html">CDC guidance on instrument cleaning</a></details>
+<details class="ref"><summary>Instrument photo credits</summary>
+<ul>
+<li><a href="https://commons.wikimedia.org/wiki/File:Mayo_scissors_02.jpg">Mayo scissors 02</a> by Saltanat ebli, CC0.</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Adson_06.jpg">Adson 06</a> and <a href="https://commons.wikimedia.org/wiki/File:Adson_05.jpg">Adson 05</a> (working-end close-up) by SnowBink, CC0.</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Curved_Hemostatic_Mosquito_Forceps_of_Dr._John_Hersel_Gladney_-_DPLA_-_ab73c6459d190ec886a8f43831b2ca7b_(page_1).jpg">Curved hemostatic mosquito forceps</a> from the Missouri Historical Society, No Copyright – United States.</li>
+<li><a href="https://commons.wikimedia.org/wiki/File:Ig%C5%82otrzymacz_Hegar.jpg">Hegar needle holder</a> by Bialo-zielony, <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Rotated and cropped, with the adaptation under the same license.</li>
+</ul><p>Photos are cropped and rotated as needed. Simulated soil is added during the exercise.</p></details>
+</main>
+</body>
+</html>
