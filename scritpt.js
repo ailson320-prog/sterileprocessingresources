@@ -30,7 +30,7 @@ const quizDatabase = [
         answer: "Once the desired temperature is reached"
     },
     {
-        category: "Prep an Pack",
+        category: "Prep and Pack",
         question: "Which of the following is an instrument marking method? ",
         options: ["Acid-base etching", "Paint", "Coloring pencil", "Paint brush"],
         answer: "Acid-base etching"
@@ -121,7 +121,10 @@ function loadQuestion() {
     }
 
     const currentQ = currentQuestions[currentQuestionIndex];
-    document.getElementById("question-text").innerText = currentQ.question;
+    const question = document.getElementById("question-text");
+    question.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestions.length}. ${currentQ.question}`;
+    question.tabIndex = -1;
+    question.focus({ preventScroll: true });
 
     const optionsContainer = document.getElementById("options-container");
     optionsContainer.innerHTML = ""; // Clear out previous buttons
@@ -146,7 +149,9 @@ function handleAnswer(selectedOption, correctAnswer) {
 function showResults() {
     document.getElementById("question-screen").style.display = "none";
     document.getElementById("result-screen").style.display = "block";
-    document.getElementById("score-text").innerText = `Your Score: ${score} / ${currentQuestions.length}`;
+    const summary = document.getElementById("score-text");
+    summary.textContent = `Your score is ${score} out of ${currentQuestions.length}.`;
+    summary.focus({ preventScroll: true });
 }
 
 function resetQuiz() {
@@ -159,31 +164,7 @@ function resetQuiz() {
 
 
 
-// panels
-
-const panels = document.querySelectorAll('.panel')
-
-panels.forEach(panel => {
-    panel.addEventListener('click', () => {
-        removeActiveClasses()
-        panel.classList.add('active')
-    })
-})
-
-function removeActiveClasses() {
-    panels.forEach(panel => {
-        panel.classList.remove('active')
-    })
+if (location.hostname === 'sterileprocessingresources.netlify.app') {
+    document.getElementById('contact-form').hidden = false;
+    document.getElementById('contact-link').hidden = true;
 }
-
-
-// Form
-
-const labels = document.querySelectorAll('.form-control label');
-
-labels.forEach(label => {
-    label.innerHTML = label.innerText
-        .split('').map((letter, idx) => `<span style="transition-delay:${idx * 50}ms">${letter}</span>`).join('')
-})
-
-
